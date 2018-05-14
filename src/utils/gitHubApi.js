@@ -1,6 +1,6 @@
 module.exports = {
     getToken() {
-        return `cdf7520cbcb72e1163ca87f92091c9b202c9cfee`
+        return `e29d2149ad79abf81e4478d113080c83c7c6c645`
     },
 
     getLabels(vue) {
