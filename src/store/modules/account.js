@@ -87,7 +87,7 @@ const getters = {
         const queryString = Object.keys(query)
             .map(key => `${key}=${encodeURIComponent(query[key] || '')}`)
             .join('&')
-
+        console.log(queryString)
         return `http://github.com/login/oauth/authorize?${queryString}`
     }
 }
