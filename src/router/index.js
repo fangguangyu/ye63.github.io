@@ -6,7 +6,8 @@ Vue.use(Router)
 
 const router = new Router({
     routes: routes,
-    mode: 'history' //去除router里面的#
+    mode: 'history', //去除router里面的#
+    base: '/docs/'
 })
 
 export default router
