@@ -1,22 +1,22 @@
 <template>
-  <div v-if="issue" class="blog-detail-container">
-    <div class="title-container">
-      <span class="back" @click="back">
-        <img src="../assets/back-icon.svg" class="back-icon">返回
-      </span>
-      <span class="title">{{issue.title}}</span>
-      <ul>
-        <li class="tag tag-small" v-for="label in issue.labels" :key="label.id" @click="setActiveLabel(label)" :style="{ backgroundColor: '#' + label.color}">{{label.name}}
-        </li>
-      </ul>
+    <div v-if="issue" class="blog-detail-container">
+        <div class="title-container">
+            <span class="back" @click="back">
+                <img src="../assets/back-icon.svg" class="back-icon">返回
+            </span>
+            <span class="title">{{issue.title}}</span>
+            <ul>
+                <li class="tag tag-small" v-for="label in issue.labels" :key="label.id" @click="setActiveLabel(label)" :style="{ backgroundColor: '#' + label.color}">{{label.name}}
+                </li>
+            </ul>
 
+        </div>
+        <div class="comment-container bga-back-top" ref="commentContainer">
+            <comment :comment="issue" />
+            <comment v-for="comment in comments" :key="comment.id" :comment="comment" />
+            <add-comment :commentsUrl="issue.comments_url" @addCommentSuccess="handleAddCommentSuccess" />
+        </div>
     </div>
-    <div class="comment-container bga-back-top" ref="commentContainer">
-      <comment :comment="issue" />
-      <comment v-for="comment in comments" :key="comment.id" :comment="comment" />
-      <add-comment :commentsUrl="issue.comments_url" @addCommentSuccess="handleAddCommentSuccess" />
-    </div>
-  </div>
 </template>
 <script>
 import { mapActions } from "vuex";

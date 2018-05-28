@@ -21,5 +21,9 @@ export default [{
     {
         path: '*',
         redirect: '/'
+    },
+    {
+        path: '/index',
+        redirect: '/index'
     }
 ]
