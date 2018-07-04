@@ -173,21 +173,21 @@
         }
         this.isWrite = false
       },
-      fetchAccessToken () {
-        const query = this.$queryParse()
-        if (query.code) {
-          const code = query.code
-          delete query.code
-          const replacedUrl = `${window.location.origin}${window.location.pathname}${this.$queryStringify(query)}${window.location.hash}`
-          history.replaceState(null, null, replacedUrl)
+      // fetchAccessToken () {
+      //   const query = this.$queryParse()
+      //   if (query.code) {
+      //     const code = query.code
+      //     delete query.code
+      //     const replacedUrl = `${window.location.origin}${window.location.pathname}${this.$queryStringify(query)}${window.location.hash}`
+      //     history.replaceState(null, null, replacedUrl)
 
-          this.$gitHubApi.getAccessToken(this, code).then(response => {
-            if (response.data && response.data.access_token) {
-              this.setAccessToken(response.data.access_token)
-            }
-          })
-        }
-      },
+      //     this.$gitHubApi.getAccessToken(this, code).then(response => {
+      //       if (response.data && response.data.access_token) {
+      //         this.setAccessToken(response.data.access_token)
+      //       }
+      //     })
+      //   }
+      // },
       addComment () {
         this.isCommitting = true
         this.$gitHubApi.addComment(this, this.commentsUrl, this.newComment.trim()).then(response => {
@@ -207,9 +207,9 @@
       }
     },
     mounted () {
-      this.$nextTick(() => {
-        this.fetchAccessToken()
-      })
+      // this.$nextTick(() => {
+      //   this.fetchAccessToken()
+      // })
     }
   }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <ul class="label-list">
-    <li v-for="(nav, index) in navs">
+    <li v-for="(nav, index) in navs" :key="index">
       <a :href="'#anchor-'+index"> {{ nav.message }}</a>
     </li>
   </ul>

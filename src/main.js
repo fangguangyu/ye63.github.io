@@ -72,6 +72,9 @@ let loadingInstance
 // request拦截器
 axios.interceptors.request.use((config) => {
     let isGetUserInfo = vm.$isGetUserInfo(vm, config)
+        //跨域的时候缓存头部，不用每次都发送预检请求
+    console.log(config);
+    // config.headers['Access-Control-Max-Age'] = 24 * 3600 * 30; //20天
     if (!isGetUserInfo) {
         loadingInstance = Loading.service({
             text: '拼命加载中...'
