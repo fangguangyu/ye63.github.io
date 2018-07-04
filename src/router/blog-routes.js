@@ -14,5 +14,6 @@ export default [
     path: 'BlogDetail/:number',
     name: 'BlogDetail',
     component: resolve => require(['@/views/BlogDetail.vue'], resolve)
-  }
+  } 
+  
 ]
