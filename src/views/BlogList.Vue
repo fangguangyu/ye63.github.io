@@ -96,6 +96,7 @@ export default {
       this.currentPage = val
       this.getIssues()
     },
+    
     getIssues() {
       let start = new Date().getTime();//起始时间
       this.$gitHubApi.getIssues(this, {
