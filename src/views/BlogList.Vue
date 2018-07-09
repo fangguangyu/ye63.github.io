@@ -83,7 +83,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'updateActiveLabel'
+      'updateActiveLabel',
+      // ''
     ]),
     setActiveLabel(label) {
       this.updateActiveLabel(label)
