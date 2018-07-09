@@ -34,7 +34,7 @@ export default {
     },
     components: { Comment, AddComment },
     methods: {
-        ...mapActions(["updateActiveLabel"]),
+        ...mapActions(["updateActiveLabel", "setWebMeta"]),
         setActiveLabel(label) {
             this.updateActiveLabel(label);
             this.$router.push("/");
@@ -51,6 +51,7 @@ export default {
         getIssue() {
             this.$gitHubApi.getIssue(this, this.number).then(response => {
                 this.issue = response.data;
+                console.log(this.issue.title)
                 this.getComments();
             });
         },
@@ -84,11 +85,37 @@ export default {
     mounted() {
         this.$nextTick(() => {
             if (this.issue) {
+                console.log(this.issue.title);
                 this.getComments();
             } else {
                 this.getIssue();
             }
         });
+    },
+    watch: {
+        issue: {//深度监听，可监听到对象、数组的变化
+            handler(val, oldVal) {
+                console.log(this.issue)
+                let keywords = "";
+                this.issue.labels.map(function (item) {
+                    keywords += `,${item.name}`;
+                });
+                let description = this.issue.body_html;
+                description = description.replace(/<pre>.*?<\/pre>/ig, "")//过滤代码
+                description = description.replace(/[\r\n\ ]/g, "") //去掉换行空格
+                // description = description.replace(/[a-z0-9]/g, "");//去掉字母和数字
+                description = description.replace(/<[^>]*>|/g, "")//去掉标签
+                description = description.substring(0, 145) + '...'
+                console.log(description)
+                let blogDetailObj = {
+                    title: this.issue.title,
+                    keywords: `${this.issue.title}${keywords}`,
+                    description: description
+                }
+                this.setWebMeta(blogDetailObj);
+            },
+            deep: true
+        }
     }
 };
 </script>
