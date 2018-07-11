@@ -1,10 +1,11 @@
-:running:BGAIssueBlog:running:
+:running:前端迷:running:
 ============
 
+[demo预览](https://www.ye63.com)
 
 ## 项目背景
 
-刚接触 GitHub 的时候就开始在仓库 [ye63.github.io](https://github.com/ye63/ye63.github.io) 里创建 [Issues](https://github.com/ye63/ye63.github.io/issues) 来记录学习笔记，那时候我还不知道有 GitHub Pages，后来了解到了可以通过 GitHub Pages 来搭建 [个人博客站点](http://www.ye63.cn)，但是如果涉及到在文章里嵌套图片的话还是比较麻烦的
+刚接触 GitHub 的时候就开始在仓库 [ye63.github.io](https://github.com/ye63/ye63.github.io) 里创建 [Issues](https://github.com/ye63/ye63.github.io/issues) 来记录学习笔记，那时候我还不知道有 GitHub Pages，后来了解到了可以通过 GitHub Pages 来搭建 [个人博客站点](http://www.ye63.com)，但是如果涉及到在文章里嵌套图片的话还是比较麻烦的
 
 通过 Issues 记录学习笔记的优点：
 
@@ -58,11 +59,11 @@ const state = {
     },
     {
       img: 'static/img/weibo.png',
-      url: 'http://weibo.com/bingoogol'
+      url: ''
     },
     {
       img: 'static/img/git.png',
-      url: 'https://ye63.gitbooks.io/bgalearningnotes-git/content'
+      url: ''
     }
     // 如果还有其他站点需要显示，继续在这里追加
   ]

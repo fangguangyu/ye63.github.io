@@ -84,7 +84,7 @@ export default {
   methods: {
     ...mapActions([
       'updateActiveLabel',
-      // ''
+      "setWebMeta"
     ]),
     setActiveLabel(label) {
       this.updateActiveLabel(label)
@@ -97,9 +97,10 @@ export default {
       this.currentPage = val
       this.getIssues()
     },
-    
+
     getIssues() {
       let start = new Date().getTime();//起始时间
+      const that = this;
       this.$gitHubApi.getIssues(this, {
         label: this.activeLabel ? this.activeLabel.name : '',
         keyword: this.keyword,
@@ -108,7 +109,14 @@ export default {
       }).then(response => {
         // 加载完数据后滚动到顶部
         let end = new Date().getTime();//接受时间
-
+        console.log("this", this);
+        let label = that.activeLabel ? that.activeLabel.name +'-': '';
+          let blogDetailObj = {
+            title: `${label}前端迷`,
+            keywords: `${label},前端迷,前端开发`,
+            description: `${label}前端迷 ，${label},前端迷,前端开发`
+          }
+        that.setWebMeta(blogDetailObj);
         console.log(end - start) + "ms";//返回函数执行需要时间
         if (this.$refs.issueList) {
           this.$refs.issueList.scrollTop = 0
